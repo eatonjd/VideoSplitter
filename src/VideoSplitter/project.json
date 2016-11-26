@@ -1,0 +1,42 @@
+{
+  "buildOptions": {
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true
+  },
+  "dependencies": {
+    "Microsoft.NETCore.App": {
+      "version": "1.1.0",
+      "type": "platform"
+    },
+    "System.IO.FileSystem": "4.3.0",
+    "system.io.filesystem.driveinfo": "4.0.0-beta-23123"
+  },
+  "frameworks": {
+    "netcoreapp1.1": {
+      "imports": [
+        "dotnet5.6",
+        "portable-net45+win8"
+      ]
+    }
+  },
+  "publishOptions": {
+    "include": [
+      "wwwroot",
+      "**/*.cshtml",
+      "appsettings.json",
+      "web.config"
+    ]
+  },
+  "runtimeOptions": {
+    "configProperties": {
+      "System.GC.Server": true
+    }
+  },
+  "scripts": {
+    "prepublish": [ "bower install", "dotnet bundle" ],
+    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+  },
+  "tools": {
+    "BundlerMinifier.Core": "2.2.306"
+    }
+}
